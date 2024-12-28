@@ -1,10 +1,12 @@
 package com.example.pertemuan12.view
 
 import android.graphics.Paint.Align
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -112,4 +114,14 @@ fun HomeStatus(
 
             }
 
+}
+
+@Composable
+fun OnLoading(modifier: Modifier = Modifier){
+    Image(
+        modifier = modifier.size(200.dp),
+        painter = painterResource(R.drawable.loading_img),
+        contentDescription = stringResource(R.string.loading)
+
+    )
 }
