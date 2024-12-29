@@ -2,6 +2,7 @@ package com.example.pertemuan12.viewModel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pertemuan12.model.Mahasiswa
@@ -41,7 +42,7 @@ data class InsertUiEvent(
     val kelas: String = "",
     val angkatan: String = ""
 )
-    fun InsertUiEventtoMhs(): Mahasiswa = Mahasiswa(
+    fun InsertUiEvent.toMhs(): Mahasiswa = Mahasiswa(
         nim = nim,
         nama = nama,
         alamat = alamat,

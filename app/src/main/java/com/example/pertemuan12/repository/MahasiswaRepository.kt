@@ -2,7 +2,8 @@ package com.example.pertemuan12.repository
 
 import com.example.pertemuan12.model.Mahasiswa
 import com.example.pertemuan12.service_api.MahasiswaService
-import java.io.IOException
+import okio.IOException
+
 
 interface MahasiswaRepository {
     suspend fun getMahasiswa(): List<Mahasiswa>
@@ -32,7 +33,7 @@ class MahasiswaKontakRepository(
         try{
             val response = kontakApiService.deleteMahasiswa(nim)
             if(!response.isSuccessful){
-                throw IOException("Failed to delete kontak. HTTP status code: " + "${response.code()}")
+                throw IOException("Failed to delete kontak. HTTP status code: " + "${response.hashCode()}")
             }else{
                 response.message()
                 println(response.message())

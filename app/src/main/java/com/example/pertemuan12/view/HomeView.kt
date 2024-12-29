@@ -43,6 +43,7 @@ import com.example.pertemuan12.ui.costumwidget.CostumeTopAppBar
 import com.example.pertemuan12.ui.navigation.DestinasiNavigasi
 import com.example.pertemuan12.viewModel.HomeUiState
 import com.example.pertemuan12.viewModel.HomeViewModel
+import com.example.pertemuan12.viewModel.PenyediaViewModel
 
 object DestinasiHome : DestinasiNavigasi {
     override val route = "home"
@@ -108,7 +109,7 @@ fun HomeStatus(
     onDeleteClick: (Mahasiswa) -> Unit = {}
 ){
     when(homeUiState){
-        is HomeUiState.Loading -> OnScreen(modifier = modifier.fillMaxSize())
+        is HomeUiState.Loading -> OnLoading(modifier = modifier.fillMaxSize())
 
         is HomeUiState.Success ->
             if(homeUiState.mahasiswa.isEmpty()){
@@ -136,7 +137,8 @@ fun HomeStatus(
 fun OnLoading(modifier: Modifier = Modifier){
     Image(
         modifier = modifier.size(200.dp),
-        painter = painterResource(R.drawable.loading_img),
+        //loading_img
+        painter = painterResource(R.drawable.img),
         contentDescription = stringResource(R.string.loading)
 
     )
@@ -149,8 +151,9 @@ fun OnError(retryAction: () -> Unit, modifier: Modifier = Modifier){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ){
+//        ic_connection_error
         Image(
-            painter = painterResource(id = R.drawable.ic_connection_error), contentDescription = "")
+            painter = painterResource(id = R.drawable.img), contentDescription = "")
         Text(text = stringResource(R.string.loading_failed),
             modifier = Modifier.padding(16.dp))
         Button(onClick = retryAction){
