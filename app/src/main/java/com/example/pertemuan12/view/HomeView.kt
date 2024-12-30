@@ -53,7 +53,7 @@ object DestinasiHome : DestinasiNavigasi {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    navigateToltemEntry: () -> Unit,
+    navigateToItemEntry: () -> Unit,
     modifier: Modifier = Modifier,
     onDetailClick: (String) -> Unit = {},
     viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
@@ -75,13 +75,13 @@ fun HomeScreen(
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = navigateToltemEntry,
+                onClick = navigateToItemEntry,
                 shape = MaterialTheme.shapes.medium,
                 modifier = Modifier.padding(18.dp)
             ){
                 Icon(
                     imageVector = Icons.Default.Add,
-                    contentDescription = "Add Kontak"
+                    contentDescription = "Add mahasiswa"
                 )
             }
         },
@@ -105,7 +105,7 @@ fun HomeStatus(
     homeUiState: HomeUiState,
     retryAction: () -> Unit,
     modifier: Modifier = Modifier,
-    onDetailClick: (String) -> Unit = {},
+    onDetailClick: (String) -> Unit ,
     onDeleteClick: (Mahasiswa) -> Unit = {}
 ){
     when(homeUiState){
@@ -114,7 +114,7 @@ fun HomeStatus(
         is HomeUiState.Success ->
             if(homeUiState.mahasiswa.isEmpty()){
                 return Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center){
-                    Text(text = "Tidak Ada data Kontak")
+                    Text(text = "Tidak Ada data mahasiswa")
                 }
             }else{
                 MhsLayout(
@@ -138,7 +138,7 @@ fun OnLoading(modifier: Modifier = Modifier){
     Image(
         modifier = modifier.size(200.dp),
         //loading_img
-        painter = painterResource(R.drawable.img),
+        painter = painterResource(R.drawable.img_1),
         contentDescription = stringResource(R.string.loading)
 
     )
@@ -179,13 +179,13 @@ fun MhsLayout(
         items(
             mahasiswa
         ){
-            kontak ->
+            mahasiswa ->
             MhsCard(
-                mahasiswa = kontak,
+                mahasiswa = mahasiswa,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { onDetailClick(kontak) },
-                onDeleteClick = {onDeleteClick(kontak)}
+                    .clickable { onDetailClick(mahasiswa) },
+                onDeleteClick = {onDeleteClick(mahasiswa)}
             )
         }
     }
