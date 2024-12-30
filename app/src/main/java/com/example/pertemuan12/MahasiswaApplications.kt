@@ -8,9 +8,8 @@ import com.example.pertemuan12.dependenciesinjection.MahasiswaContainer
 class MahasiswaApplications: Application(){
     lateinit var container: AppContainer
 
-    override fun OnCreate(){
+    override fun onCreate(){
         super.onCreate()
-        container = MahasiswaContainer()
-
+        container =  MahasiswaContainer()
     }
 }
