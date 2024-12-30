@@ -18,7 +18,7 @@ interface MahasiswaService{
     @GET("bacamahasiswa.php")
     suspend fun getAllMahasiswa(): List<Mahasiswa>
 
-    @GET("bacamahasiswa.php{nim}")
+    @GET("baca1mahasiswa.php")
     suspend fun getMahasiswabyNim(@Query("nim") nim:String):Mahasiswa
 
     @POST("insertmahasiswa.php")
@@ -28,5 +28,6 @@ interface MahasiswaService{
     suspend fun updateMahasiswa(@Query("nim")nim: String,@Body mahasiswa : Mahasiswa)
 
     @DELETE("deletemahasiswa.php/{nim}")
-    suspend fun deleteMahasiswa(@Query("nim")nim: String,@Body mahasiswa : Mahasiswa)
+    suspend fun deleteMahasiswa(@Query("nim")nim: String):retrofit2.Response<Void>
+
 }
